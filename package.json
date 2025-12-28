@@ -1,0 +1,21 @@
+{
+  "name": "imei_checker2",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "playwright": "^1.57.0",
+    "puppeteer": "^24.34.0"
+  }
+}
