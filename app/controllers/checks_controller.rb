@@ -9,9 +9,9 @@ class ChecksController < ApplicationController
     results = {
       docomo:   DocomoChecker.check(imei),
       au:       AuChecker.check(imei),
-      # softbank: SoftbankChecker.check(imei),
-      # rakuten:  RakutenChecker.check(imei),
-      # mineo:    MineoChecker.check(imei)
+      softbank: SoftbankChecker.check(imei),
+      rakuten:  RakutenChecker.check(imei),
+      mineo:    MineoChecker.check(imei)
     }
 
     render json: results
