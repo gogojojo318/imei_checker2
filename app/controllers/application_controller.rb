@@ -1,3 +1,3 @@
 class ApplicationController < ActionController::Base
-  http_basic_authenticate_with name: "geo", password: "11339"
+  # http_basic_authenticate_with name: "geo", password: "11339"
 end
