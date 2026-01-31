@@ -1,5 +1,11 @@
 class ChecksController < ApplicationController
   def check
+    today = Date.current
+    stat = UsageStat.find_or_create_by!(date: today) do |s|
+      s.total_checks = 0
+    end
+    stat.increment!(:total_checks)
+    
     imei = params[:imei].to_s.strip
 
     unless imei.match?(/\A\d{15}\z/)
