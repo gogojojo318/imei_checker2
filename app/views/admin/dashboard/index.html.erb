@@ -1,43 +1,48 @@
-<h1 class="text-2xl font-bold mb-6">管理者ダッシュボード</h1>
+<div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8">
+  <h1 class="text-2xl font-bold mb-6">管理者ダッシュボード</h1>
 
-<div class="grid gap-4 sm:grid-cols-2">
-  <div class="p-4 rounded bg-white shadow">
-    <p class="text-sm text-gray-500">今日のPV（トップ訪問）</p>
-    <p class="text-3xl font-bold"><%= @today_pv %></p>
+  <div class="grid gap-4 sm:grid-cols-2">
+    <div class="p-4 rounded bg-white shadow">
+      <p class="text-sm text-gray-500">今日のPV（トップ訪問）</p>
+      <p class="text-3xl font-bold"><%= @today_pv %></p>
+    </div>
+
+    <div class="p-4 rounded bg-white shadow">
+      <p class="text-sm text-gray-500">今日のチェック数</p>
+      <p class="text-3xl font-bold"><%= @today_checks %></p>
+    </div>
+
+    <div class="p-4 rounded bg-white shadow">
+      <p class="text-sm text-gray-500">累計PV（トップ訪問）</p>
+      <p class="text-3xl font-bold"><%= @total_pv %></p>
+    </div>
+
+    <div class="p-4 rounded bg-white shadow">
+      <p class="text-sm text-gray-500">累計チェック数</p>
+      <p class="text-3xl font-bold"><%= @total_checks %></p>
+    </div>
   </div>
 
-  <div class="p-4 rounded bg-white shadow">
-    <p class="text-sm text-gray-500">今日のチェック数</p>
-    <p class="text-3xl font-bold"><%= @today_checks %></p>
-  </div>
+  <h2 class="text-xl font-bold mt-8 mb-3">直近7日</h2>
 
-  <div class="p-4 rounded bg-white shadow">
-    <p class="text-sm text-gray-500">累計PV（トップ訪問）</p>
-    <p class="text-3xl font-bold"><%= @total_pv %></p>
-  </div>
-
-  <div class="p-4 rounded bg-white shadow">
-    <p class="text-sm text-gray-500">累計チェック数</p>
-    <p class="text-3xl font-bold"><%= @total_checks %></p>
+  <div class="overflow-x-auto">
+    <table class="min-w-full border-collapse">
+      <thead>
+        <tr class="border-b">
+          <th class="text-left py-2">日付</th>
+          <th class="text-right py-2">PV</th>
+          <th class="text-right py-2">チェック</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @last_7_days.each do |s| %>
+          <tr class="border-b">
+            <td class="py-2"><%= s.date %></td>
+            <td class="py-2 text-right"><%= s.page_views.to_i %></td>
+            <td class="py-2 text-right"><%= s.total_checks.to_i %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
-
-<h2 class="text-xl font-bold mt-8 mb-3">直近7日</h2>
-<table class="w-full border-collapse">
-  <thead>
-    <tr class="border-b">
-      <th class="text-left py-2">日付</th>
-      <th class="text-right py-2">PV</th>
-      <th class="text-right py-2">チェック</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @last_7_days.each do |s| %>
-      <tr class="border-b">
-        <td class="py-2"><%= s.date %></td>
-        <td class="py-2 text-right"><%= s.page_views.to_i %></td>
-        <td class="py-2 text-right"><%= s.total_checks.to_i %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
